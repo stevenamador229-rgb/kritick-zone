@@ -3,8 +3,8 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--paper);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
 body{max-width:440px;margin:0 auto;padding:0 14px 48px;font-weight:800}
-.brand{position:relative;text-align:center;padding:1.1rem .4rem .6rem;overflow:hidden;isolation:isolate}
-.brand .heart{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:110%;opacity:.42;pointer-events:none;z-index:0}
+.brand{position:relative;text-align:center;padding:0 0 .8rem;overflow:hidden;isolation:isolate}
+.brand .heart{position:relative;display:block;width:100%;max-width:420px;height:auto;margin:0 auto;opacity:.88;pointer-events:none;z-index:0}
 .brand .k{position:relative;z-index:1;width:44px;height:44px;display:block;margin:0 auto .2rem}
 .brand .kicker-brand,.brand h1,.brand .turnaround{position:relative;z-index:1;text-shadow:0 2px 8px #0C0D10,0 0 16px #0C0D10,0 0 4px #0C0D10;margin:0;width:100%}
 .kicker-brand{letter-spacing:.14em;font-size:1rem}
@@ -71,4 +71,12 @@ h2,h3{margin:.1rem 0 .4rem;font-size:1.4rem}
 footer{text-align:center;color:var(--muted);margin:1.5rem 0}
 #toast{position:fixed;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:80;min-height:48px;padding:.75rem 1.3rem;border-radius:14px;background:var(--go);color:#0C0D10}
 #toast[hidden]{display:none}
+
+.brand-fore{position:absolute;left:0;right:0;top:50%;transform:translateY(-42%);z-index:1;text-align:center;width:100%;pointer-events:none}
+.brand-fore .k{position:relative;z-index:1;width:56px;height:56px;display:block;margin:0 auto .35rem}
+.zone-email-copy{text-align:center;margin:.55rem 0 .25rem}
+.zone-email-addr{margin:.15rem 0 .35rem}
+.zone-email-text{display:inline;background:transparent;border:0;padding:.35rem .1rem;min-height:48px;font-weight:900;font-size:1.2rem;line-height:1.35;color:var(--paper);word-break:break-all;text-decoration:underline;cursor:pointer}
+.zone-copy-email{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin:.15rem 0 .3rem;background:#2a2b32;color:var(--paper);border:0;border-radius:14px;font-weight:900;font-size:1.05rem}
+.style-thumb{display:block;width:100%;height:auto;border-radius:12px;margin:0 0 .5rem;background:#0C0D10}
 @media(min-width:520px){body{max-width:560px}}

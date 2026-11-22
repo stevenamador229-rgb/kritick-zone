@@ -16,14 +16,36 @@
     var body = 'Attach your video or paste a Google Drive link. If you paid, put your order code in the subject.';
     a.href = 'mailto:' + addr + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
   }
-  function copy(val){
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      return navigator.clipboard.writeText(val);
+  function selectVisible(text){
+    var nodes = document.querySelectorAll('.zone-email-text, .email-text');
+    for (var i=0;i<nodes.length;i++){
+      if ((nodes[i].textContent || '').trim() === text){
+        var range = document.createRange();
+        range.selectNodeContents(nodes[i]);
+        var sel = window.getSelection();
+        if (sel){ sel.removeAllRanges(); sel.addRange(range); }
+        return true;
+      }
     }
-    var ta = document.createElement('textarea');
-    ta.value = val; document.body.appendChild(ta); ta.select();
-    try{ document.execCommand('copy'); } finally { document.body.removeChild(ta); }
-    return Promise.resolve();
+    return false;
+  }
+  function copy(val){
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = val; ta.setAttribute('readonly','');
+      ta.style.cssText='position:fixed;top:0;left:0;width:1px;height:1px;opacity:0.01;font-size:16px';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      var ok=false;
+      try{ ok=document.execCommand('copy'); }catch(e){ ok=false; }
+      document.body.removeChild(ta);
+      if(!ok) selectVisible(val);
+      return ok;
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(val).then(function(){ return true; }).catch(function(){ return fallback(); });
+    }
+    return Promise.resolve(fallback());
   }
   document.querySelectorAll('[data-copy]').forEach(function(btn){
     btn.addEventListener('click', function(ev){
