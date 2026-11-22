@@ -59,6 +59,8 @@ h2,h3{margin:.1rem 0 .4rem;font-size:1.4rem}
 .order-code{background:transparent;color:var(--blue);text-decoration:underline}
 .copy{background:#2a2b32;color:var(--paper)}
 .qr{display:block;margin:12px auto;background:#fff;border-radius:12px;padding:8px;width:160px;height:160px}
+.qr-fig{display:inline-flex;flex-direction:column;align-items:center;margin:0 .4rem .6rem;max-width:180px}
+.qr-cap{margin:.35rem 0 0;font-size:14px;font-weight:800;line-height:1.25;text-align:center;color:var(--paper);max-width:180px}
 .qr-row{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap}
 .fallback{word-break:break-all;color:var(--muted);text-align:center}
 .rush-h{color:var(--red)}
